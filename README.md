@@ -17,7 +17,7 @@ Um aplicativo simples de terminal para gerenciar uma coleção de livros usando 
 
 ### ✅ Requisitos
 
-- [Go](https://golang.org/doc/install) 1.18 ou superior
+- [Go](https://golang.org/doc/install) 1.24 ou superior
 - Git (opcional, para clonar o projeto)
 
 ---
@@ -130,4 +130,40 @@ Ao adicionar um livro:
     A data de lançamento deve ser válida
 
     A nota deve estar entre 0.0 e 10.0
+---
 
+## 🐳 Executando com Docker
+
+Primeiro, tenha certeza que o docker está instalado e o seu serviço está em
+execução: [documentação](https://docs.docker.com/engine/install/)
+
+### 📦 Construir a imagem Docker
+
+Dentro do diretório do projeto:
+
+```bash
+docker build --tag bookstore .
+```
+
+> [!NOTE]
+> Pode ser necessário executar o comando com permissões de administrador
+
+### ▶️ Executar o container
+
+```bash
+docker run -it --rm \
+  -v $(pwd)/data:/data \
+  --name bookstore \
+  bookstore
+```
+
+> [!NOTE]
+> Pode ser necessário executar o comando com permissões de administrador
+
+Isso irá:
+
+    Rodar o app interativamente no terminal (-it)
+
+    Montar o volume local ./data no container para persistência do banco (-v)
+
+    Remover o container ao sair (--rm)
