@@ -1,3 +1,19 @@
+# Considerações e Resumo
+
+Simples aplicação CRUD feita para o teste técnico da DTI.
+Para este teste escolhi lidar com dados de livros. Cada livro tem os campos:
+```markdown
+- Titulo (obrigatorio)
+- Autor (obrigatorio)
+- Data de Lançamento (obrigatorio)
+- Nota (obrigatorio)
+- Resumo (opcional)
+```
+
+Optei por fazer a aplicação na linguagem Go por ser simples o suficiente para
+evitar complexidades desnecessárias, mas moderna o suficiente para a
+implementação ser comoda.
+
 # 📚 Aplicativo de Linha de Comando - Bookstore
 
 Um aplicativo simples de terminal para gerenciar uma coleção de livros usando Go e SQLite.
