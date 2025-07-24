@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"bookstore/logger"
 	"bookstore/model"
 	"bookstore/repo"
 	"bufio"
@@ -32,6 +33,7 @@ func RunMenu() {
 			book := readBookInput()
 			err := repo.AddBook(book)
 			if err != nil {
+				logger.LogError(err)
 				fmt.Println("Erro ao adicionar livro:", err)
 			} else {
 				fmt.Println("Livro adicionado com sucesso.")
@@ -39,6 +41,7 @@ func RunMenu() {
 		case 2:
 			books, err := repo.ListBooks()
 			if err != nil {
+				logger.LogError(err)
 				fmt.Println("Erro:", err)
 				break
 			}
@@ -51,6 +54,7 @@ func RunMenu() {
 			id := readIDInput("Digite o ID do livro: ")
 			book, err := repo.GetBookByID(id)
 			if err != nil {
+				logger.LogError(err)
 				fmt.Println("Erro:", err)
 			} else {
 				fmt.Println()
@@ -65,6 +69,7 @@ func RunMenu() {
 			id := readIDInput("Digite o ID do livro: ")
 			book, err := repo.GetBookByID(id)
 			if err != nil {
+				logger.LogError(err)
 				fmt.Println("Erro:", err)
 				break
 			}
