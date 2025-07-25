@@ -15,6 +15,7 @@ type Book struct {
 	Summary     string
 }
 
+// Validate checks if the book fields are valid.
 func (b *Book) Validate() error {
 	if strings.TrimSpace(b.Title) == "" {
 		return errors.New("título não pode estar vazio")

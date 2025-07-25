@@ -7,6 +7,7 @@ import (
 
 var DB *sql.DB
 
+// InitDB initializes the database connection and creates the books table if it does not exist.
 func InitDB() error {
 	var err error
 	DB, err = sql.Open("sqlite", "./books.db")

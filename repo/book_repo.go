@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// AddBook adds a new book to the database.
 func AddBook(book model.Book) error {
 	if err := book.Validate(); err != nil {
 		return err
@@ -19,6 +20,7 @@ func AddBook(book model.Book) error {
 	return err
 }
 
+// ListBooks retrieves all books from the database.
 func ListBooks() ([]model.Book, error) {
 	rows, err := db.DB.Query("SELECT id, title, author, release_date, score, summary FROM books")
 	if err != nil {
@@ -39,6 +41,8 @@ func ListBooks() ([]model.Book, error) {
 	return books, nil
 }
 
+// GetBookByID retrieves a book by its ID from the database.
+// If the book is not found, it returns an error.
 func GetBookByID(id int) (model.Book, error) {
 	var b model.Book
 	var dateStr string
@@ -51,6 +55,8 @@ func GetBookByID(id int) (model.Book, error) {
 	return b, nil
 }
 
+// UpdateBook updates an existing book in the database.
+// If the book does not exist, it returns an error.
 func UpdateBook(book model.Book) error {
 	stmt, err := db.DB.Prepare("UPDATE books SET title = ?, author = ?, release_date = ?, score = ?, summary = ? WHERE id = ?")
 	if err != nil {
@@ -61,6 +67,8 @@ func UpdateBook(book model.Book) error {
 	return err
 }
 
+// DeleteBook deletes a book from the database by its ID.
+// It returns true if the book was deleted, or false if it was not found.
 func DeleteBook(id int) (bool, error) {
 	stmt, err := db.DB.Prepare("DELETE FROM books WHERE id = ?")
 	if err != nil {

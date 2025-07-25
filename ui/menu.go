@@ -13,6 +13,7 @@ import (
 
 var scanner = bufio.NewScanner(os.Stdin)
 
+// RunMenu starts the main menu loop for the book management system.
 func RunMenu() {
 	for {
 		fmt.Println()
@@ -93,6 +94,7 @@ func RunMenu() {
 	}
 }
 
+// readBookInput reads input from the user to create a new book.
 func readBookInput() model.Book {
 	fmt.Println()
 	fmt.Println("Adicionar Novo Livro")
